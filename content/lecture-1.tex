@@ -1,0 +1,141 @@
+\section{Data Representation}
+
+\subsection{Terminology}
+
+\begin{definition}[Random Experiment]
+    Action with uncertain outcome.
+\end{definition}
+
+\begin{definition}[Population]
+    The set of all possible replications of the experiment.
+    
+    \begin{equation*}
+        \text{Population} \coloneqq \set{ \text{all possible replications of the experiment} }
+    \end{equation*}
+\end{definition}
+
+\begin{definition}[Sample]
+    A \textit{subset} of the population.
+    
+    \begin{equation*}
+        \text{Sample} \subseteq \text{Population}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}[Statistical Inference]
+    From the \textit{sample} we may be able to \textit{infer} conclusions about the \textit{population}.
+    
+    \begin{equation*}
+        \text{Sample} \xRightarrow{\text{statistical inference}} \text{Population}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}[Variable]
+    A \textit{quantity} or \textit{characteristic} of interest for any member of the population.
+\end{definition}
+
+\begin{example}\
+    \begin{itemize}
+        \item Age
+        \item Time until failure
+        \item Degree subject
+    \end{itemize}
+\end{example}
+
+\begin{definition}[Data]
+    The set of values of one or more variables recorded for a sample taken from a population.
+\end{definition}
+
+\subsection{Types of Data}
+
+\begin{enumerate}
+    \item \textbf{Discrete}: \textit{countable} possible set of values.
+    \begin{enumerate}
+        \item \textbf{Binary}: only 2 possible values.
+        \item \textbf{Categorical}: only categories are possible values.
+    \end{enumerate}
+    
+    \item \textbf{Continuous}: \textit{uncountable} set of possible values.
+\end{enumerate}
+
+\subsection{Graphs}
+
+\begin{definition}[Bar Chart]
+    Suitable for \textit{discrete} data.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics
+            [width=0.5\textwidth]
+            {content/img/1-bar-chart.png}
+        \caption{Bar chart.}
+        \label{fig:bar-chart-example}
+    \end{figure}
+    
+    \begin{itemize}
+        \item \textit{Height} of each bar $\propto$ \textit{frequency} of the value
+        \item Can also use \textit{relative frequencies} (proportions) instead
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Histogram]
+    Suitable for \textit{continuous} data.
+    
+    The data range can be \textit{partitioned} into \textit{class intervals}.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics
+            [width=0.5\textwidth]
+            {content/img/1-histogram.png}
+        \caption{Histogram.}
+        \label{fig:histogram-example}
+    \end{figure}
+
+    \begin{itemize}
+        \item \textit{Area} of each box $\propto$ \textit{frequency} of the class interval.
+        \item Can also use the \textit{relative frequencies} (proportions) instead.
+    \end{itemize}
+\end{definition}
+
+\subsection{Summary Statistics}
+
+We can calculate \textit{summative measures} from data.
+
+\begin{definition}[Summative Measures]\
+    \begin{itemize}
+        \item Measures of \textbf{location}:
+        \begin{enumerate}
+            \item Mean
+            \item Median
+            \item Mode
+        \end{enumerate}
+        \item Measures of \textbf{dispersion}:
+        \begin{enumerate}
+            \item Sample variance $\sigma^2$ (and sample standard deviation $\sigma$)
+            \item Range
+            \item Interquartile range
+            \item Coefficient of variation ($r^2$)
+        \end{enumerate}
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Mean]
+    One type of \textit{average}.
+    
+    Given $n$ \textit{observations}, each denoted as $x_i$, then the sample mean $\Bar{x}$ is defined by
+    
+    \begin{equation}\label{eq:mean}
+        \Bar{x} = \frac{1}{n} \sum \limits_{i=1}^{n} x_i
+    \end{equation}
+    
+    Given $n$ \textit{observed values}, with each observed value $x_i$ observed $f_i$ times (frequency $f_i$), then the sample mean $\Bar{x}$ is defined by
+    
+    \begin{equation}\label{eq:mean_freq}
+        \Bar{x} = \frac{
+            \sum \limits_{i=1}^{n} f_i x_i
+        }{
+            \sum \limits_{i=1}^{n} f_i
+        }
+    \end{equation}
+\end{definition}
