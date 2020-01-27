@@ -1,0 +1,257 @@
+\section{Probability}
+
+\subsection{Definitions}
+
+\begin{definition}[Random Experiment]
+    A \textit{random experiment} is any action which produces uncertain outcome.
+\end{definition}
+
+\begin{definition}[Sample Space]
+    The \textit{sample space} $\Omega$ is the set of all possible outcomes.
+    
+    \begin{equation}
+        \Omega = \set{ \text{all possible outcomes} }
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Event]
+    An \textit{event} or \textit{event space} $E$ is any \textit{subset} of the sample space $\Omega$.
+    
+    \begin{equation}
+        E \subseteq \Omega
+    \end{equation}
+\end{definition}
+
+\subsection{Set Recap}
+
+\begin{definition}[Element of ($\in$)]
+    \begin{equation}
+        \omega \in \Omega
+    \end{equation}
+    
+    Means element $\omega$ is contained within the set $\Omega$.
+\end{definition}
+
+\begin{definition}[Subset of $\subseteq$]
+    \begin{equation}
+        A \subseteq \Omega
+    \end{equation}
+    
+    Means set $A$ is an subset of $\Omega$ (possibly equal).
+\end{definition}
+
+\begin{definition}[Empty set $\varnothing$]
+    \begin{equation}
+        \varnothing = \set{ }
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Complement $\AbsComplement{A}$]
+    The \textit{complement} of set $A$, denoted $\AbsComplement{A}$, is defined as
+    
+    \begin{equation}
+        \AbsComplement{A} \equiv \set{ \omega \in \Omega \given \omega \not\in A }
+    \end{equation}
+    
+    Then for any event $E$, $\AbsComplement{E}$ is the event such that $E$ does \textit{not} occur.
+\end{definition}
+
+\begin{definition}[Intersection $A \cap B$]
+    The \textit{intersection} of two sets $A$ and $B$ is defined as
+    
+    \begin{equation}
+        A \cap B \equiv \set{ \omega \given \omega \in A \land \omega \in B }
+    \end{equation}
+    
+    Then for any two events $E_1$ and $E_2$, $E_1 \cap E_2$ is the event that both $E_1$ \textit{and} $E_2$ occur.
+\end{definition}
+
+\begin{definition}[Union $A \cup B$]
+    The \textit{union} of two sets $A$ and $B$ is defined as
+    
+    \begin{equation}
+        A \cup B \equiv \set{ \omega \given \omega \in A \lor \omega \in B }
+    \end{equation}
+    
+    Then for any two events $E_1$ and $E_2$, $E_1 \cup E_2$ is the event that either $E_1$ \textit{or} $_2$ occur, \textit{or both}.
+\end{definition}
+
+\begin{definition}[Difference $A \setminus B$]
+    The \textit{difference} between sets $A$ and $B$ is denoted by $A \setminus B$ and is defined by
+
+    \begin{equation}
+        A \setminus B \equiv \set{ \omega \in A \given \omega \not\in B } \equiv A \cap \AbsComplement{B}
+    \end{equation}
+    
+    Note that like subtraction on the integers, the difference operator $\setminus$ is \textit{not} commutative.
+    
+    Then for any two events $E_1$ and $E_2$, $E_1 \setminus E_2$ is the even that $E_1$ occurs while $E_2$ does not occur.
+\end{definition}
+
+\subsubsection{Useful Identities}
+
+\begin{definition}[De Morgan's Laws]
+    \begin{align}
+        \AbsComplement{(A \cap B)} &\equiv \AbsComplement{A} \cup \AbsComplement{B} \\
+        \AbsComplement{(A \cup B)} &\equiv \AbsComplement{A} \cap \AbsComplement{B}
+    \end{align}
+\end{definition}
+
+\begin{definition}[Distributive Laws]
+    \begin{align}
+        A \cap (B \cup C) &\equiv (A \cap B) \cup (A \cap C) \\
+    \end{align}
+\end{definition}
+
+\begin{definition}[Distributive Laws]
+    \begin{align}
+        A \cap (B \cup C) &\equiv (A \cap B) \cup (A \cap C) \\
+        A \cup (B \cap C) &\equiv (A \cup B) \cap (A \cup C)
+    \end{align}
+\end{definition}
+
+\subsubsection{Other Useful Set Terminologies}
+
+\begin{definition}[Disjoint Set]
+    Two sets $A$ and $B$ are \textit{disjoint} or \textit{mutually exclusive} iff
+    
+    \begin{equation}
+        A \cap B \equiv \varnothing
+    \end{equation}
+    
+    Then if events $E_1$ and $E_2$ are \textit{mutually exclusive}, either $E_1$ or $E_2$ occurs, but \textit{not both}.
+\end{definition}
+
+\subsection{Probability}
+
+\begin{definition}[Probability]
+    The \textit{probability} of an event is the \textit{proportion} of times that we expect the event to occur in a sufficiently large number of trials of the experiment.
+    
+    The probability of event $E$ is denoted as $\Prob{E}$.
+\end{definition}
+
+\begin{definition}[Properties of Probability]
+    \begin{align}
+        \Prob{E} &\in [0, 1] \\
+        \Prob{\Omega} &= 1 \\
+        \Prob{\varnothing} &= 0 \\
+        \Prob{E_1 \cup E_2} &= \Prob{E_1} + \Prob{E_2} - \Prob{E_1 \cap E_2}
+    \end{align}
+    
+    If $E_1$ and $E_2$ are \textit{mutually exclusive} events, i.e. $\Prob{E_1 \cap E_2} = \varnothing$, then
+    
+    \begin{equation}
+        \Prob{E_1 \cup E_2} = \Prob{E_1} + \Prob{E_2}
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Axiomatic Definition of Probability]
+    A \textit{probability measure} $\mathrm{P}$ is the mapping which sends each event $E$ to a number $\Prob{E}$ such that the three conditions are fulfilled:
+    
+    \begin{enumerate}
+        \item $\Forall E \colon \Prob{E} \ge 0$ where $E$ is any event
+        \item $\Prob{\Omega} = 1$
+        \item \textit{Countable additivity}: if $E_1$, $E_2$, $\ldots$ is some sequence of events such that each of the events are mutually exclusive to each other ($i \ne j \to E_i \cap E_j = \varnothing$) then
+            \begin{equation}
+                \Prob{E_1 \cup E_2 \cup \cdots} = \Prob{E_1} + \Prob{E_2} + \cdots
+            \end{equation}
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Probability in Equally Likely Outcomes]
+    In experiments where all outcomes are \textit{equally likely}, then the probability of an event $E$ is given by
+    
+    \begin{equation}
+        \Prob{E} = \frac{n(E)}{n(\Omega)}
+    \end{equation}
+    
+    Where $n(\cdot)$ means the number of occurrences in the event space / sample space (i.e. cardinality of the sets).
+\end{definition}
+
+\subsection{Conditional Probability}
+
+\begin{definition}[Conditional Probability of $E_1$ given $E_2$]
+    The \textit{conditional probability} of $E_1$ given $E_2$, denoted by $\Prob{E_1 \given E_2}$, is given by
+    
+    \begin{equation}
+        \Prob{E_1 \given E_2} = \frac{\Prob{E_1 \cap E_2}}{\Prob{E_2}}
+    \end{equation}
+    
+    Note that
+    
+    \begin{equation}
+        \Prob{E_1 \given E_2} \ne \Prob{E_2 \given E_1}
+    \end{equation}
+\end{definition}
+
+\begin{example}[Prosecutor's Fallacy]
+    In a criminal trial case based on DNA evidence, let:
+    \begin{itemize}
+        \item $I$ = \enquote{defendant is innocent}
+        \item $M$ = \enquote{defendant's DNA matches that of the criminal}
+    \end{itemize}
+    
+    The prosecution usually quotes the matched probability $\Prob{M \given I}$ whereas the jury has to assess the probability of innocence given the evidence $\Prob{I \given M}$ and so the error of confusing $\Prob{I \given M}$ with $\Prob{M \given I}$ is deemed the \textit{prosecutor's fallacy}.
+\end{example}
+
+\begin{definition}[Independence]
+    Two events $E_1$ and $E_2$ are said to be \textit{independent} iff
+    
+    \begin{equation}
+        \Prob{E_1 \cap E_2} = \Prob{E_1} \cdot \Prob{E_2}
+    \end{equation}
+    
+    Then, if $E_1$ and $E_2$ are independent events (given $\Prob{E_1} > 0 \land \Prob{E_2} > 0$) then
+    
+    \begin{align}
+        \Prob{E_1 \given E_2} &= \frac{\Prob{E_1 \cap E_2}}{\Prob{E_2}} = \frac{\Prob{E_1}\Prob{E_2}}{\Prob{E_2}} = \Prob{E_1} \\
+        \Prob{E_2 \given E_1} &= \Prob{E_2}
+    \end{align}
+    
+    That is, knowledge of either one of the events does \textit{not} affect the probability of the other.
+\end{definition}
+
+\subsection{Bayes' Theorem}
+
+\begin{definition}[Bayes' Theorem]
+    \textit{Bayes' theorem} is useful to compute $\Prob{E_1 \given E_2}$ when given $\Prob{E_2 \given E_1}$
+    
+    \begin{equation}
+        \Prob{E_1 \given E_2} = \frac{\Prob{E_1 \given E_2} \Prob{E_1}}{\Prob{E_2}}
+    \end{equation}
+\end{definition}
+
+\subsection{Law of Total Probability}
+
+\begin{definition}[Law of Total Probability (LTP)]
+    To compute $\Prob{E}$ when $E_1, \ldots, E_n$ is the collection of \textit{mutually exclusive} events such that $E \subseteq E_1 \cup \cdots \cup E_n$. If $E$ occurs, then exactly one of $\set{E_1, \ldots, E_n}$ must occur.
+    
+    \begin{align}
+        \Prob{E}
+            &= \sum \limits_{i=1}^{n} \Prob{E \cap E_i} \\
+            &= \sum \limits_{i=1}^{n} \Prob{E \given E_i} \Prob{E_i}
+    \end{align}
+
+    LTP still holds even if $n = \infty$.
+\end{definition}
+
+\subsubsection{Intersection of Three Events}
+
+\begin{definition}[Intersection of Three Events]
+    \begin{align}
+        \Prob{(E_1 \cap E_2) \cap E_3}
+            ={}& \Prob{E_3 \given E_1 \cap E_2} \Prob{E_1 \cap E_2} \\
+            ={}& \Prob{E_3 \given E_1 \cap E_2} \Prob{E_2 \given E_1} \Prob{E_1} \\
+            \begin{split}
+                ={}& \Prob{E_1} + \Prob{E_2} + \Prob{E_3} \\
+                &- \Prob{E_1 \cap E_2} - \Prob{E_1 \cap E_3} - \Prob{E_2 \cap E_3} \\
+                &+ \Prob{E_1 \cap E_2 \cap E_3}
+            \end{split}
+    \end{align}
+    
+    If $E_1$, $E_2$ and $E_3$ are mutually exclusive events, then
+    
+    \begin{equation}
+        \Prob{E_1 \cup E_2 \cup E_3} = \Prob{E_1} + \Prob{E_2} + \Prob{E_3}
+    \end{equation}
+\end{definition}
