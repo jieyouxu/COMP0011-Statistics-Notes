@@ -1,0 +1,299 @@
+\section{Random Variables}
+
+\subsection{Definitions}
+
+\begin{definition}[Random Variable]
+    A \textit{random variable} $v$ maps each point in the sample space $\Omega$ to a real number.
+    
+    \begin{equation}
+        v \colon \Omega \to \Real
+    \end{equation}
+    
+    Random variables have two classifications:
+    
+    \begin{enumerate}
+        \item \textbf{Discrete} random variables; and
+        \item \textbf{Continuous} random variables.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Discrete Random Variable]
+    A \textit{discrete} random variable can take on values from a countable set of potential values.
+\end{definition}
+
+\begin{example}[Coin Flip]
+    Let $X$ take on the values:
+    
+    \begin{equation*}
+        X =
+        \begin{cases}
+            0 & \text{if $X$ is head} \\
+            1 & \text{if $X$ is tail}
+        \end{cases}
+    \end{equation*}
+    
+    Then $X$ is a discrete random variable as it takes on either of the two values in $\set{0, 1}$.
+\end{example}
+
+\begin{definition}[Continuous Random Variable]
+    A \textit{continuous} random variable can take on values from an uncountable set of potential values.
+\end{definition}
+
+\begin{example}[Rainfall]
+    Let $R$ denote the amount of rainfall in one day in mm.
+    
+    Then $R$ can take on values from $\PosReal$, i.e. a continuous random variable.
+\end{example}
+
+\subsection{Sample Measures}
+
+\begin{definition}[Relative Frequency Distribution]
+    We can derive \textit{relative frequency distribution} for discrete data collected from the \textit{sample}.
+    
+    Let $n = \sum \limits_{i = 1}^{n} f_i$ be the sample size, then
+    
+    \begin{center}
+        \begin{tabular}{c|c}
+            Observed values & Relative frequency \\
+            \hline
+            $x_1$ & $f_1 / n$ \\
+            $\vdots$ & $\vdots$ \\
+            $x_N$ & $f_N / n$ \\
+        \end{tabular}
+    \end{center}
+\end{definition}
+
+\begin{definition}[Sample Mean]
+    The \textit{sample mean} $\bar{x}$ is defined as
+
+    \begin{equation}
+        \sum \limits_{i=1}^{N} x_i \frac{f_i}{n}        
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Sample Variance]
+    The \textit{sample variance} $s^2$ is defined as
+    
+    \begin{align}
+        s^2
+        &= \sum \limits_{i=1}^{N} \left( x_i - \bar{x} \right)^2 \frac{f_i}{n - 1} \\
+        &= \frac{\left( \sum \limits_{i=1}^{N} x_i^2 f_i - n \bar{x}^2 \right)}{n - 1}
+    \end{align}
+\end{definition}
+
+\begin{definition}[Sample Standard Deviation]
+    The \textit{sample standard deviation} is given by
+    
+    \begin{equation}
+        s = \sqrt{s^2}
+    \end{equation}
+\end{definition}
+
+\subsection{Population Measures}
+
+\begin{definition}[Probability Distribution]
+    We can derive \textit{probability distribution} with respect to a random variable $X$ for the \textit{population}
+    
+    \begin{center}
+        \begin{tabular}{c|c}
+            Possible values & Probability \\
+            \hline
+            $x_1$ & $p_1 = \Prob{X = x_1}$ \\
+            $\vdots$ & $\vdots$ \\
+            $x_N$ & $p_N = \Prob{X = x_N}$ \\
+        \end{tabular}
+    \end{center}
+    
+    With the important properties:
+    
+    \begin{enumerate}
+        \item Each possibility $p_i$ is \textit{non-negative}.
+            \begin{equation}
+                \Forall i \in [1, n] \colon p_i \ge 0
+            \end{equation}
+        \item The possibility distribution sum to $1$.
+            \begin{equation}
+                \sum \limits_{i = 1}^{N} p_i = 1
+            \end{equation}
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Population Mean]
+    The \textit{population mean} $\mu$ is defined as
+    
+    \begin{equation}
+        \mu = \sum \limits_{i=1}^{N} x_i p_i = \ExpVal{X}
+    \end{equation}
+    
+    Where $\ExpVal{X}$ denotes the \textit{expected value} for $X$.
+\end{definition}
+
+\begin{definition}[Population Variance]
+    The \textit{population variance} $\sigma^2$ is defined as
+    
+    \begin{align}
+        \sigma^2
+        &= \sum \limits_{i=1}^{N} (x_i - \mu)^2 p_i \\
+        &= \sum \limits_{i=1}^{N} x_i^2 p_i - \mu^2 \\
+        &= \Var{X}
+    \end{align}
+    
+    Where $\Var{X}$ denotes the \textit{variance} of $X$.
+\end{definition}
+
+\begin{definition}[Population Standard Deviation]
+    The \textit{population standard deviation} $\sigma$ is given by
+    
+    \begin{equation}
+        \sigma = \sqrt{\sigma^2}
+    \end{equation}
+\end{definition}
+
+\subsection{Expectation}
+
+\begin{definition}[Expectation (Expected Value)]
+    Let $X$ be a random variable and let $Y = f(X)$ be some function $f \colon X \to Y$, then the expected value $\ExpVal{Y}$ of $Y$ is given as
+    
+    \begin{align}
+        \ExpVal{Y}
+        &= \ExpValS{f(x)} \\
+        &= \sum \limits_{i=1}^{N} f(x_i) \Prob{X = x_i} \\
+        &= \sum \limits_{i=1}^{N} f(x_i) p_i
+    \end{align}
+    
+    Note that
+    
+    \begin{equation}
+        \ExpVal{Y} \equiv \sum_j y_j \Prob{Y = y_j}
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Variance]
+    Since
+    
+    \begin{align*}
+        \Var{X}
+        &= \sum \limits_{i=1}^{N} (x_i - \mu)^2 p_i \\
+        &= \ExpValS{(X - \mu)^2} \\
+        &= \sum \limits_{i=1}^{N} x_i^2 p_i - \mu^2 \\
+        &= \ExpValS{X^2} - \mu^2
+    \end{align*}
+    
+    then
+    
+    \begin{equation}
+        \Var{X} = \ExpValS{X^2} - \mu^2
+    \end{equation}
+\end{definition}
+
+\subsection{Independence, Expectation and Variance}
+
+\begin{remark}[Event Independence]
+    Two events $E_1$ and $E_2$ are \textit{independent} if and only if
+    
+    \begin{equation*}
+        \Prob{E_1 \cap E_2} = \Prob{E_1} \Prob{E_2}
+    \end{equation*}
+\end{remark}
+
+\begin{definition}[Independent Discrete Random Variables]
+    Two \textit{discrete random variables} $X$ and $Y$ are \textit{independent} if and only if
+    
+    \begin{equation}
+        \Forall x_i \in X \colon \Forall y_j \in Y \colon \Prob{X = x_i \cap Y = y_j} = \Prob{X = x_i} \Prob{Y = y_j}
+    \end{equation}
+    
+    That is, each pair of events $\set{ X = x_i }$ and $\set{ Y = y_j }$ are \textit{independent}.
+\end{definition}
+
+\begin{definition}[Expectation of Discrete Random Variable Plus Constant]
+    If $X$ is a discrete random variable, and $b \in \Real$ is some constant, then
+    
+    \begin{equation}
+        \ExpVal{X + b} = \ExpVal{X} + b
+    \end{equation}
+    
+    Because this is a shift for each occurrence $x_i$.
+\end{definition}
+
+\begin{definition}[Variance of Discrete Random Variable Plus Constant]
+    If $X$ is a discrete random variable, and $b \in \Real$ is some constant, then
+    
+    \begin{equation}
+        \Var{X + b} = \Var{X}
+    \end{equation}
+    
+    With constant $b$ ignored because shifting each expected value by some constant do not change how their spread is.
+\end{definition}
+
+\begin{definition}[Expectation of Discrete Random Variable Times Constant]
+    If $X$ is a discrete random variable, and $a \in \Real$ is some constant, then
+    
+    \begin{equation}
+        \ExpVal{aX} = a\ExpVal{X}
+    \end{equation}
+    
+    Because each occurrence $x_i$ is scaled by $a$, causing the mean to also scale by $a$.
+\end{definition}
+
+\begin{definition}[Variance of Independent Discrete Random Variable Times Constant]
+    If $X$ is an independent discrete random variable, and $a \in \Real$ is some constant, then
+    
+    \begin{equation}
+        \Var{aX} = a^2 \Var{X}
+    \end{equation}
+    
+    Because smaller samples get scaled a smaller absolute amount while larger samples get scaled a larger absolute amount (even if they are scaled at the same proportion $a$), causing the spread to increase.
+\end{definition}
+
+\begin{definition}[Expectation of a Linear Transformation]
+    Let independent discrete random variable $Y = aX + b$, where $X$ is an independent discrete random variable, then the expectation of $Y$ is given as
+    
+    \begin{equation}
+        \ExpVal{Y} = \ExpVal{aX + b} = a\ExpVal{X} + b
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Variance of a Linear Transformation]
+    Let independent discrete random variable $Y = aX + b$, where $X$ is an independent discrete random variable, then the variance of $Y$ is given as
+    
+    \begin{equation}
+        \Var{Y} = \Var{aX + b} = a^2 \Var{X}
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Expectation for Two Independent Discrete Random Variables Added]
+    If $X, Y$ are two \textit{independent} discrete random variables, then the expectation $\ExpVal{X + Y}$ is given as
+    
+    \begin{equation}
+        \ExpVal{X + Y} = \ExpVal{X} + \ExpVal{Y}
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Expectation for Two Independent Discrete Random Variables Subtracted]
+    If $X, Y$ are two \textit{independent} discrete random variables, then the expectation $\ExpVal{X - Y}$ is given as
+    
+    \begin{equation}
+        \ExpVal{X - Y} = \ExpVal{X} - \ExpVal{Y}
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Variance for Two Independent Discrete Random Variables Added]
+    If $X, Y$ are two \textit{independent} discrete random variables, then the expectation $\Var{X + Y}$ is given as
+    
+    \begin{equation}
+        \Var{X + Y} = \Var{X} + \Var{Y}
+    \end{equation}
+    
+    Note that this does \textit{not} hold if one of $X$ and $Y$ is dependent on the other!
+\end{definition}
+
+\begin{definition}[Variance for Two Independent Discrete Random Variables Added]
+    If $X, Y$ are two \textit{independent} discrete random variables, then the expectation $\Var{X - Y}$ is given as
+    
+    \begin{equation}
+        \Var{X - Y} = \Var{X} + \Var{Y}
+    \end{equation}
+    
+    Note that their variance is still \textit{added}!
+\end{definition}
