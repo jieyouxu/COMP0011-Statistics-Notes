@@ -297,3 +297,179 @@
     
     Note that their variance is still \textit{added}!
 \end{definition}
+
+\subsection{Discrete Distributions}
+
+\begin{definition}[Distributions for a Random Variable]
+    For some random variable $X$, we use the tilde to describe its random distribution (named $\mathrm{DistributionName}$)
+    
+    \begin{equation}
+        X \sim \mathrm{DistributionName}(\; \langle \mathit{parameter} \rangle, \dots \;)
+    \end{equation}
+\end{definition}
+
+\subsubsection{Bernoulli Distribution}
+
+\begin{definition}[Bernoulli Distribution]
+    The \textit{Bernoulli distribution} is suitable for an experiment with discrete \textit{binary} outcomes, either \textit{success} or \textit{failure}, respectively labelled as $n = 0$ (\enquote{failure}) or $n = 1$ (\enquote{success}).
+    
+    \begin{itemize}
+        \item The \textit{success} case $n = 1$ occurs with probability $p$.
+        \item The \textit{failure} case $n = 0$ occurs with probability $q \equiv 1 - p$.
+        \item $0 < p < 1$.
+    \end{itemize}
+    
+    The \textit{probability mass function} (PMF) for $X \sim \Bernoulli{p}$ with success probability $p$ is
+    \begin{equation}
+        \Prob{n} =
+        \begin{cases}
+            1 - p & \text{if $n = 0$} \\
+            p & \text{if $n = 1$} \\
+        \end{cases}
+    \end{equation}
+    
+    The \textit{expected value} for $X \sim \Bernoulli{p}$ is
+    
+    \begin{equation}
+        \ExpVal{X} = p
+    \end{equation}
+    
+    The \textit{variance} for $X \sim \Bernoulli{p}$ is
+    
+    \begin{equation}
+        \Var{X} = p - p^2 = p(1 - p) = pq
+    \end{equation}
+\end{definition}
+
+\subsubsection{Binomial Distribution}
+
+\begin{remark}
+    A \textit{binomial distribution} is the sum of \textit{identically} and \textit{independently} distributed \textit{Bernoulli} random variables, with each Bernoulli random variable having the outcome of either $0$ or $1$.
+\end{remark}
+
+\begin{definition}[Binomial Distribution]
+    The \textit{binomial distribution} is suitable for a repeated sequence of \textit{independent} and \textit{identical} random experiments, with each experiment having binary outcomes (so each random experiment has Bernoulli distribution). Each binary Bernoulli experiment has success probability $p$ and failure probability $q \equiv 1 - p$. The random variable $X \sim \Binomial{n}{p}$ is the number of \textit{successes} in $n$ independent repeated experiments, each with success probability $p$.
+    
+    The \textit{probability mass function} (PMF) for getting $k$ successes in $n$ independent Bernoulli trials is given as
+    
+    \begin{equation}
+        \Prob{X = k} = \binom{n}{k} p^k (1 - p)^{n - k}
+    \end{equation}
+    
+    For each possible success count $k = 0, 1, \dots, n$, with $\binom{n}{k}$ being the binomial coefficient
+    
+    \begin{equation}
+        \binom{n}{k} = \frac{n!}{k!(n-k)!}
+    \end{equation}
+    
+    For $i = 1, \dots, n$, let
+    
+    \begin{equation}
+        X_i = \begin{cases}
+            0 & \text{$i$th repetition is failure} \\
+            1 & \text{$i$th repetition is success} \\
+        \end{cases}
+    \end{equation}
+    
+    Each of $X_1, \dots, X_n$ is an independent and identical $X_i \sim \Bernoulli{p}$ random variable, hence $\ExpVal{X_i} = p$ and $\Var{X_i} = pq = p(1 - p)$.
+    
+    Since $X = \sum \limits_{i=1}^n X_i$, then the \textit{expected value} for $X \sim \Binomial{n}{p}$ is then
+    
+    \begin{equation}
+        \ExpVal{X} = \sum \limits_{i=1}^n \ExpVal{X_i} = np
+    \end{equation}
+    
+    And the \textit{variance} for $X \sim \Binomial{n}{p}$ is then
+    
+    \begin{equation}
+        \Var{X} = \sum \limits_{i=1}^n \ExpVal{X_i} = npq = np(1-p)
+    \end{equation}
+\end{definition}
+
+\begin{remark}
+    The Binomial distribution is \textit{not} suitable for cases where experiments are \textit{not independent}. For example, taking black versus red balls out of a container \textit{without replacement} changes the probability of getting a black ball after each experiment.
+\end{remark}
+
+\subsubsection{Geometric Distribution}
+
+\begin{definition}[Geometric Distribution]
+    The \textit{geometric distribution} is suitable for \textit{independent} repetitions of a \textit{binary} experiment, with each experiment having success probability $p$ and failure probability $q \equiv 1 - p$.
+    
+    The random variable $X \sim \Geometric{p}$ describes the number of trials \textit{up to and including} the \textit{first success}. That is, how many tries are required to get the first success (including the first successful try).
+    
+    The probability that the $k$th trial is the first success ($k - 1$ failures followed by the $k$th success) is
+    
+    \begin{equation}
+        \Prob{X = k} = pq^{k - 1} = p(1-p)^{k-1}, \quad k = 1, 2, \dots
+    \end{equation}
+    
+    The \textit{expected value} for $X \sim \Geometric{p}$ is
+    
+    \begin{equation}
+        \ExpVal{X} = \frac{1}{p}
+    \end{equation}
+    
+    The \textit{variance} for $X \sim \Geometric{p}$ is
+    
+    \begin{equation}
+        \Var{X} = \frac{q}{p^2} = \frac{1 - p}{p^2}
+    \end{equation}
+\end{definition}
+
+\subsubsection{Poisson Distribution}
+
+\begin{remark}
+    The \textit{Poisson distribution} is suitable for approximating the binomial distribution in the case of large $n$ and small $p$ (rule of thumb: $n \ge 20$ and $p \le 0.05$).
+\end{remark}
+
+\begin{definition}[Poisson Distribution]
+    The \textit{Poisson distribution} is useful for:
+    
+    \begin{enumerate}
+        \item Modelling the number of random events that occurs during a given \textit{time interval} or \textit{space interval}.
+        \item Approximating a binomial distribution with large $n$ ($n \ge 20$) and small $p$ ($p \le 0.05$).
+    \end{enumerate}
+    
+    The probability of observing $k$ events in the given interval, with the \textit{rate parameter} $\lambda$ is
+    
+    \begin{equation}
+        \Prob{X = k} = \frac{e^{-\lambda} \lambda^k}{k!}
+    \end{equation}
+    
+    Then $X \sim \Poisson{\lambda}$ for \textit{rate parameter} $\lambda$.
+    
+    The \textit{expected value} of $X \sim \Poisson{\lambda}$ is exactly its rate parameter $\lambda$
+    
+    \begin{equation}
+        \ExpVal{X} = \lambda
+    \end{equation}
+    
+    The \textit{variance} of $X \sim \Poisson{\lambda}$ is also exactly its rate parameter $\lambda$
+    
+    \begin{equation}
+        \Var{X} = \lambda
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Assumptions of the Poisson Process]
+    The \textit{Poisson process} assumes that:
+    
+    \begin{enumerate}
+        \item Events occur \textit{randomly}.
+        \item Events occur \textit{one at a time}.
+        \item Events occur at the \textit{average rate} of $\lambda$ per unit time or per unit space.
+        \item Number of observed events in non-overlapping time or space intervals are \textit{independent}.
+    \end{enumerate}
+    
+    If $X$ is the number of events during a \textit{time interval} or \textit{space interval} of length $t$, then $X \sim \Poisson{\lambda}$ has the \textit{mean} $\mu = \lambda t$.
+\end{definition}
+
+\begin{definition}[Approximating Binomial Distribution with Poisson Distribution]
+    For a binomial distribution $X \sim \Binomial{n}{p}$ with $n \ge 20$ and $p \le 0.05$ then we can \textit{approximate} it with a Poisson distribution with $\lambda = np$.
+    
+    \begin{equation}
+        X \sim \Binomial{n}{p}, \; n \ge 20 \land p \le 0.05 \implies X \ApproxDistributed \Poisson{\lambda}, \; \lambda = n p
+    \end{equation}
+    
+    Where $\ApproxDistributed$ denotes that the distribution is an approximation.
+\end{definition}
