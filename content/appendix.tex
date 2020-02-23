@@ -1,0 +1,78 @@
+\section{Appendix}
+
+\subsection{PS-4 | Q3}
+
+\begin{align}
+    \Prob{\mathrm{male\_id\_correctly}} &= 0.95 \\
+    \Prob{\mathrm{female\_id\_correctly}} &= 0.9 \\
+    \nonumber \\
+    \Prob{\mathrm{originates\_male}} &= 0.75 \\
+    \Prob{\mathrm{originates\_female}} &= 0.25
+\end{align}
+
+\subsubsection{(a)}
+
+$\Prob{incorrectly} = (1 - 0.95) \times 0.75 + (1 - 0.9) \times 0.25$ = 0.0625
+
+\subsubsection{(c)}
+
+Given $n(\Omega) = 20$, $Y \ge 1$ where $Y$ is the number of \textit{incorrectly} classified recordings.
+
+Then $Y \sim \Binomial{20}{0.0625}$.
+
+\begin{align}
+    \Prob{Y \ge 1}
+    &= 1 - \Prob{Y < 1} \\
+    &= 1 - \Prob{Y = 0} \\
+    &= 1 - \binom{20}{0} 0.0625^{0} (1 - 0.0625)^{20 - 0} \\
+    &= 0.7249412101
+\end{align}
+
+The conditional probability is given as
+
+\begin{align}
+    \Prob{X \mid Y \ge 1}
+        &= \frac{ \Prob{X \cap Y \ge 1} }{ \Prob{Y \ge 1} }
+\end{align}
+
+Where $X$ is the event that the first 5 recordings are \textit{correctly} classified. Then $\Prob{X \cap Y \ge 1}$ is the probability of both of the following events occurring together:
+
+\begin{enumerate}
+    \item First 5 recordings are correctly classified.
+    \item There is at least 1 recording classified incorrectly.
+\end{enumerate}
+
+To compute the probability, we consider this:
+
+\begin{quote}
+    Recordings 1-5 are assumed to be correctly classified; then we just have to worry about recordings 6-20 (15 remaining recordings). Note that the remaining recordings form a Binomial distribution as well, if we let $R$ denote the number of incorrect classification of the remaining recordings, $R \sim \Binomial{15}{0.0625}$, as we have to consider the combination (ordering of when incorrect classification(s) occur matters!) of interleaving between correct and incorrect classifications.
+\end{quote}
+
+Again, note that $\Prob{R \ge 1} \equiv 1 - \Prob{R < 1} \equiv 1 - \Prob{R = 0}$.
+
+\begin{align}
+    \Prob{R \ge 1}
+    &= 1 - \Prob{R = 0} \\
+    &= 1 - \binom{15}{0} (0.0625)^{0} (1-0.0625)^{15-0} \\
+    &= 0.6201875942
+\end{align}
+
+\begin{align}
+    \Prob{X \cap Y \ge 1}
+    &= \Prob{X} \times \Prob{R \ge 1} \\
+    &= 0.0625^5 \times \Prob{R \ge 1} \\
+    &= 0.724196434 \times 0.6201875942 \\
+    &= 0.4491376441
+\end{align}
+
+Then
+
+\begin{align}
+    \Prob{X \mid Y \ge 1}
+    &= \frac{ \Prob{X \cap Y \ge 1} }{ \Prob{Y \ge 1} } \\
+    &= \frac{ 0.4491376441 }{ 0.7249412101 } \\
+    &= 0.6195504378 \\
+    &\approx 0.6196 \quad (4\ s.f.)
+\end{align}
+
+Which yields the desired probability.
