@@ -1,16 +1,17 @@
-\section{Random Variables}
+\section{Discrete Random Variables}
 
 \subsection{Definitions}
 
 \begin{definition}[Random Variable]
-    A \textit{random variable} $v$ maps each point in the sample space $\Omega$ to a real number.
-    
+    A \textit{random variable} $v$ maps each point in the sample space $\Omega$
+    to a real number.
+
     \begin{equation}
         v \colon \Omega \to \Real
     \end{equation}
-    
+
     Random variables have two classifications:
-    
+
     \begin{enumerate}
         \item \textbf{Discrete} random variables; and
         \item \textbf{Continuous} random variables.
@@ -18,12 +19,13 @@
 \end{definition}
 
 \begin{definition}[Discrete Random Variable]
-    A \textit{discrete} random variable can take on values from a countable set of potential values.
+    A \textit{discrete} random variable can take on values from a countable set
+    of potential values.
 \end{definition}
 
 \begin{example}[Coin Flip]
     Let $X$ take on the values:
-    
+
     \begin{equation*}
         X =
         \begin{cases}
@@ -31,27 +33,31 @@
             1 & \text{if $X$ is tail}
         \end{cases}
     \end{equation*}
-    
-    Then $X$ is a discrete random variable as it takes on either of the two values in $\set{0, 1}$.
+
+    Then $X$ is a discrete random variable as it takes on either of the two
+    values in $\set{0, 1}$.
 \end{example}
 
 \begin{definition}[Continuous Random Variable]
-    A \textit{continuous} random variable can take on values from an uncountable set of potential values.
+    A \textit{continuous} random variable can take on values from an
+    uncountable set of potential values.
 \end{definition}
 
 \begin{example}[Rainfall]
     Let $R$ denote the amount of rainfall in one day in mm.
-    
-    Then $R$ can take on values from $\PosReal$, i.e. a continuous random variable.
+
+    Then $R$ can take on values from $\PosReal$, i.e. a continuous random
+    variable.
 \end{example}
 
 \subsection{Sample Measures}
 
 \begin{definition}[Relative Frequency Distribution]
-    We can derive \textit{relative frequency distribution} for discrete data collected from the \textit{sample}.
-    
+    We can derive \textit{relative frequency distribution} for discrete data
+    collected from the \textit{sample}.
+
     Let $n = \sum \limits_{i = 1}^{n} f_i$ be the sample size, then
-    
+
     \begin{center}
         \begin{tabular}{c|c}
             Observed values & Relative frequency \\
@@ -67,23 +73,25 @@
     The \textit{sample mean} $\bar{x}$ is defined as
 
     \begin{equation}
-        \sum \limits_{i=1}^{N} x_i \frac{f_i}{n}        
+        \sum \limits_{i=1}^{N} x_i \frac{f_i}{n}
     \end{equation}
 \end{definition}
 
 \begin{definition}[Sample Variance]
     The \textit{sample variance} $s^2$ is defined as
-    
+
     \begin{align}
         s^2
-        &= \sum \limits_{i=1}^{N} \left( x_i - \bar{x} \right)^2 \frac{f_i}{n - 1} \\
-        &= \frac{\left( \sum \limits_{i=1}^{N} x_i^2 f_i - n \bar{x}^2 \right)}{n - 1}
+        &= \sum \limits_{i=1}^{N} \left(
+            x_i - \bar{x} \right)^2 \frac{f_i}{n - 1} \\
+        &= \frac{\left( \sum
+            \limits_{i=1}^{N} x_i^2 f_i - n \bar{x}^2 \right)}{n - 1}
     \end{align}
 \end{definition}
 
 \begin{definition}[Sample Standard Deviation]
     The \textit{sample standard deviation} is given by
-    
+
     \begin{equation}
         s = \sqrt{s^2}
     \end{equation}
@@ -92,8 +100,9 @@
 \subsection{Population Measures}
 
 \begin{definition}[Probability Distribution]
-    We can derive \textit{probability distribution} with respect to a random variable $X$ for the \textit{population}
-    
+    We can derive \textit{probability distribution} with respect to a random
+    variable $X$ for the \textit{population}
+
     \begin{center}
         \begin{tabular}{c|c}
             Possible values & Probability \\
@@ -103,9 +112,9 @@
             $x_N$ & $p_N = \Prob{X = x_N}$ \\
         \end{tabular}
     \end{center}
-    
+
     With the important properties:
-    
+
     \begin{enumerate}
         \item Each possibility $p_i$ is \textit{non-negative}.
             \begin{equation}
@@ -120,30 +129,30 @@
 
 \begin{definition}[Population Mean]
     The \textit{population mean} $\mu$ is defined as
-    
+
     \begin{equation}
         \mu = \sum \limits_{i=1}^{N} x_i p_i = \ExpVal{X}
     \end{equation}
-    
+
     Where $\ExpVal{X}$ denotes the \textit{expected value} for $X$.
 \end{definition}
 
 \begin{definition}[Population Variance]
     The \textit{population variance} $\sigma^2$ is defined as
-    
+
     \begin{align}
         \sigma^2
         &= \sum \limits_{i=1}^{N} (x_i - \mu)^2 p_i \\
         &= \sum \limits_{i=1}^{N} x_i^2 p_i - \mu^2 \\
         &= \Var{X}
     \end{align}
-    
+
     Where $\Var{X}$ denotes the \textit{variance} of $X$.
 \end{definition}
 
 \begin{definition}[Population Standard Deviation]
     The \textit{population standard deviation} $\sigma$ is given by
-    
+
     \begin{equation}
         \sigma = \sqrt{\sigma^2}
     \end{equation}
@@ -152,17 +161,18 @@
 \subsection{Expectation}
 
 \begin{definition}[Expectation (Expected Value)]
-    Let $X$ be a random variable and let $Y = f(X)$ be some function $f \colon X \to Y$, then the expected value $\ExpVal{Y}$ of $Y$ is given as
-    
+    Let $X$ be a random variable and let $Y = f(X)$ be some function
+    $f \colon X \to Y$, then the expected value $\ExpVal{Y}$ of $Y$ is given as
+
     \begin{align}
         \ExpVal{Y}
         &= \ExpValS{f(x)} \\
         &= \sum \limits_{i=1}^{N} f(x_i) \Prob{X = x_i} \\
         &= \sum \limits_{i=1}^{N} f(x_i) p_i
     \end{align}
-    
+
     Note that
-    
+
     \begin{equation}
         \ExpVal{Y} \equiv \sum_j y_j \Prob{Y = y_j}
     \end{equation}
@@ -170,7 +180,7 @@
 
 \begin{definition}[Variance]
     Since
-    
+
     \begin{align*}
         \Var{X}
         &= \sum \limits_{i=1}^{N} (x_i - \mu)^2 p_i \\
@@ -178,9 +188,9 @@
         &= \sum \limits_{i=1}^{N} x_i^2 p_i - \mu^2 \\
         &= \ExpValS{X^2} - \mu^2
     \end{align*}
-    
+
     then
-    
+
     \begin{equation}
         \Var{X} = \ExpValS{X^2} - \mu^2
     \end{equation}
@@ -190,136 +200,163 @@
 
 \begin{remark}[Event Independence]
     Two events $E_1$ and $E_2$ are \textit{independent} if and only if
-    
+
     \begin{equation*}
         \Prob{E_1 \cap E_2} = \Prob{E_1} \Prob{E_2}
     \end{equation*}
 \end{remark}
 
 \begin{definition}[Independent Discrete Random Variables]
-    Two \textit{discrete random variables} $X$ and $Y$ are \textit{independent} if and only if
-    
+    Two \textit{discrete random variables} $X$ and $Y$ are \textit{independent}
+    if and only if
+
     \begin{equation}
-        \Forall x_i \in X \colon \Forall y_j \in Y \colon \Prob{X = x_i \cap Y = y_j} = \Prob{X = x_i} \Prob{Y = y_j}
+        \Forall x_i \in X \colon \Forall y_j \in Y \colon
+            \Prob{X = x_i \cap Y = y_j} = \Prob{X = x_i} \Prob{Y = y_j}
     \end{equation}
-    
-    That is, each pair of events $\set{ X = x_i }$ and $\set{ Y = y_j }$ are \textit{independent}.
+
+    That is, each pair of events $\set{ X = x_i }$ and $\set{ Y = y_j }$ are
+    \textit{independent}.
 \end{definition}
 
 \begin{definition}[Expectation of Discrete Random Variable Plus Constant]
-    If $X$ is a discrete random variable, and $b \in \Real$ is some constant, then
-    
+    If $X$ is a discrete random variable, and $b \in \Real$ is some constant,
+    then
+
     \begin{equation}
         \ExpVal{X + b} = \ExpVal{X} + b
     \end{equation}
-    
+
     Because this is a shift for each occurrence $x_i$.
 \end{definition}
 
 \begin{definition}[Variance of Discrete Random Variable Plus Constant]
-    If $X$ is a discrete random variable, and $b \in \Real$ is some constant, then
-    
+    If $X$ is a discrete random variable, and $b \in \Real$ is some constant,
+    then
+
     \begin{equation}
         \Var{X + b} = \Var{X}
     \end{equation}
-    
-    With constant $b$ ignored because shifting each expected value by some constant do not change how their spread is.
+
+    With constant $b$ ignored because shifting each expected value by some
+    constant do not change how their spread is.
 \end{definition}
 
 \begin{definition}[Expectation of Discrete Random Variable Times Constant]
-    If $X$ is a discrete random variable, and $a \in \Real$ is some constant, then
-    
+    If $X$ is a discrete random variable, and $a \in \Real$ is some constant,
+    then
+
     \begin{equation}
         \ExpVal{aX} = a\ExpVal{X}
     \end{equation}
-    
-    Because each occurrence $x_i$ is scaled by $a$, causing the mean to also scale by $a$.
+
+    Because each occurrence $x_i$ is scaled by $a$, causing the mean to also
+    scale by $a$.
 \end{definition}
 
 \begin{definition}[Variance of Independent Discrete Random Variable Times Constant]
-    If $X$ is an independent discrete random variable, and $a \in \Real$ is some constant, then
-    
+    If $X$ is an independent discrete random variable, and $a \in \Real$ is
+    some constant, then
+
     \begin{equation}
         \Var{aX} = a^2 \Var{X}
     \end{equation}
-    
-    Because smaller samples get scaled a smaller absolute amount while larger samples get scaled a larger absolute amount (even if they are scaled at the same proportion $a$), causing the spread to increase.
+
+    Because smaller samples get scaled a smaller absolute amount while larger
+    samples get scaled a larger absolute amount (even if they are scaled at
+    the same proportion $a$), causing the spread to increase.
 \end{definition}
 
 \begin{definition}[Expectation of a Linear Transformation]
-    Let independent discrete random variable $Y = aX + b$, where $X$ is an independent discrete random variable, then the expectation of $Y$ is given as
-    
+    Let independent discrete random variable $Y = aX + b$, where $X$ is an
+    independent discrete random variable, then the expectation of $Y$ is given
+    as
+
     \begin{equation}
         \ExpVal{Y} = \ExpVal{aX + b} = a\ExpVal{X} + b
     \end{equation}
 \end{definition}
 
 \begin{definition}[Variance of a Linear Transformation]
-    Let independent discrete random variable $Y = aX + b$, where $X$ is an independent discrete random variable, then the variance of $Y$ is given as
-    
+    Let independent discrete random variable $Y = aX + b$, where $X$ is an
+    independent discrete random variable, then the variance of $Y$ is given as
+
     \begin{equation}
         \Var{Y} = \Var{aX + b} = a^2 \Var{X}
     \end{equation}
 \end{definition}
 
 \begin{definition}[Expectation for Two Independent Discrete Random Variables Added]
-    If $X, Y$ are two \textit{independent} discrete random variables, then the expectation $\ExpVal{X + Y}$ is given as
-    
+    If $X, Y$ are two \textit{independent} discrete random variables, then the
+    expectation $\ExpVal{X + Y}$ is given as
+
     \begin{equation}
         \ExpVal{X + Y} = \ExpVal{X} + \ExpVal{Y}
     \end{equation}
 \end{definition}
 
 \begin{definition}[Expectation for Two Independent Discrete Random Variables Subtracted]
-    If $X, Y$ are two \textit{independent} discrete random variables, then the expectation $\ExpVal{X - Y}$ is given as
-    
+    If $X, Y$ are two \textit{independent} discrete random variables, then the
+    expectation $\ExpVal{X - Y}$ is given as
+
     \begin{equation}
         \ExpVal{X - Y} = \ExpVal{X} - \ExpVal{Y}
     \end{equation}
 \end{definition}
 
 \begin{definition}[Variance for Two Independent Discrete Random Variables Added]
-    If $X, Y$ are two \textit{independent} discrete random variables, then the expectation $\Var{X + Y}$ is given as
-    
+    If $X, Y$ are two \textit{independent} discrete random variables, then the
+    expectation $\Var{X + Y}$ is given as
+
     \begin{equation}
         \Var{X + Y} = \Var{X} + \Var{Y}
     \end{equation}
-    
-    Note that this does \textit{not} hold if one of $X$ and $Y$ is dependent on the other!
+
+    Note that this does \textit{not} hold if one of $X$ and $Y$ is dependent
+    on the other!
 \end{definition}
 
 \begin{definition}[Variance for Two Independent Discrete Random Variables Added]
-    If $X, Y$ are two \textit{independent} discrete random variables, then the expectation $\Var{X - Y}$ is given as
-    
+    If $X, Y$ are two \textit{independent} discrete random variables, then the
+    expectation $\Var{X - Y}$ is given as
+
     \begin{equation}
         \Var{X - Y} = \Var{X} + \Var{Y}
     \end{equation}
-    
+
     Note that their variance is still \textit{added}!
 \end{definition}
 
 \subsection{Discrete Distributions}
 
 \begin{definition}[Distributions for a Random Variable]
-    For some random variable $X$, we use the tilde to describe its random distribution (named $\mathrm{DistributionName}$)
-    
+    For some random variable $X$, we use the tilde to describe its random
+    distribution (named $\mathrm{DistributionName}$)
+
     \begin{equation}
-        X \sim \mathrm{DistributionName}(\; \langle \mathit{parameter} \rangle, \dots \;)
+        X \sim \mathrm{DistributionName}(\;
+            \langle \mathit{parameter} \rangle, \dots \;)
     \end{equation}
 \end{definition}
 
 \subsubsection{Bernoulli Distribution}
 
 \begin{definition}[Bernoulli Distribution]
-    The \textit{Bernoulli distribution} is suitable for an experiment with discrete \textit{binary} outcomes, either \textit{success} or \textit{failure}, respectively labelled as $n = 0$ (\enquote{failure}) or $n = 1$ (\enquote{success}).
-    
+    The \textit{Bernoulli distribution} is suitable for an experiment with
+    discrete \textit{binary} outcomes, either \textit{success} or
+    \textit{failure}, respectively labelled as $n = 0$ (\enquote{failure}) or
+    $n = 1$ (\enquote{success}).
+
     \begin{itemize}
         \item The \textit{success} case $n = 1$ occurs with probability $p$.
-        \item The \textit{failure} case $n = 0$ occurs with probability $q \equiv 1 - p$.
+        \item The \textit{failure} case $n = 0$ occurs with probability $q
+            \equiv 1 - p$.
         \item $0 < p < 1$.
     \end{itemize}
-    
-    The \textit{probability mass function} (PMF) for $X \sim \Bernoulli{p}$ with success probability $p$ is
+
+    The \textit{probability mass function} (PMF) for $X \sim \Bernoulli{p}$
+    with success probability $p$ is
+
     \begin{equation}
         \Prob{n} =
         \begin{cases}
@@ -327,15 +364,15 @@
             p & \text{if $n = 1$} \\
         \end{cases}
     \end{equation}
-    
+
     The \textit{expected value} for $X \sim \Bernoulli{p}$ is
-    
+
     \begin{equation}
         \ExpVal{X} = p
     \end{equation}
-    
+
     The \textit{variance} for $X \sim \Bernoulli{p}$ is
-    
+
     \begin{equation}
         \Var{X} = p - p^2 = p(1 - p) = pq
     \end{equation}
@@ -344,73 +381,96 @@
 \subsubsection{Binomial Distribution}
 
 \begin{remark}
-    A \textit{binomial distribution} is the sum of \textit{identically} and \textit{independently} distributed \textit{Bernoulli} random variables, with each Bernoulli random variable having the outcome of either $0$ or $1$.
+    A \textit{binomial distribution} is the sum of \textit{identically}
+    and \textit{independently} distributed \textit{Bernoulli} random variables,
+    with each Bernoulli random variable having the outcome of either $0$ or
+    $1$.
 \end{remark}
 
 \begin{definition}[Binomial Distribution]
-    The \textit{binomial distribution} is suitable for a repeated sequence of \textit{independent} and \textit{identical} random experiments, with each experiment having binary outcomes (so each random experiment has Bernoulli distribution). Each binary Bernoulli experiment has success probability $p$ and failure probability $q \equiv 1 - p$. The random variable $X \sim \Binomial{n}{p}$ is the number of \textit{successes} in $n$ independent repeated experiments, each with success probability $p$.
-    
-    The \textit{probability mass function} (PMF) for getting $k$ successes in $n$ independent Bernoulli trials is given as
-    
+    The \textit{binomial distribution} is suitable for a repeated sequence of
+    \textit{independent} and \textit{identical} random experiments, with each
+    experiment having binary outcomes (so each random experiment has Bernoulli
+    distribution). Each binary Bernoulli experiment has success probability
+    $p$ and failure probability $q \equiv 1 - p$. The random variable
+    $X \sim \Binomial{n}{p}$ is the number of \textit{successes} in $n$
+    independent repeated experiments, each with success probability $p$.
+
+    The \textit{probability mass function} (PMF) for getting $k$ successes in
+    $n$ independent Bernoulli trials is given as
+
     \begin{equation}
         \Prob{X = k} = \binom{n}{k} p^k (1 - p)^{n - k}
     \end{equation}
-    
-    For each possible success count $k = 0, 1, \dots, n$, with $\binom{n}{k}$ being the binomial coefficient
-    
+
+    For each possible success count $k = 0, 1, \dots, n$, with $\binom{n}{k}$
+    being the binomial coefficient
+
     \begin{equation}
         \binom{n}{k} = \frac{n!}{k!(n-k)!}
     \end{equation}
-    
+
     For $i = 1, \dots, n$, let
-    
+
     \begin{equation}
         X_i = \begin{cases}
             0 & \text{$i$th repetition is failure} \\
             1 & \text{$i$th repetition is success} \\
         \end{cases}
     \end{equation}
-    
-    Each of $X_1, \dots, X_n$ is an independent and identical $X_i \sim \Bernoulli{p}$ random variable, hence $\ExpVal{X_i} = p$ and $\Var{X_i} = pq = p(1 - p)$.
-    
-    Since $X = \sum \limits_{i=1}^n X_i$, then the \textit{expected value} for $X \sim \Binomial{n}{p}$ is then
-    
+
+    Each of $X_1, \dots, X_n$ is an independent and identical
+    $X_i \sim \Bernoulli{p}$ random variable, hence
+    $\ExpVal{X_i} = p$ and $\Var{X_i} = pq = p(1 - p)$.
+
+    Since $X = \sum \limits_{i=1}^n X_i$, then the \textit{expected value} for
+    $X \sim \Binomial{n}{p}$ is then
+
     \begin{equation}
         \ExpVal{X} = \sum \limits_{i=1}^n \ExpVal{X_i} = np
     \end{equation}
-    
+
     And the \textit{variance} for $X \sim \Binomial{n}{p}$ is then
-    
+
     \begin{equation}
         \Var{X} = \sum \limits_{i=1}^n \ExpVal{X_i} = npq = np(1-p)
     \end{equation}
 \end{definition}
 
 \begin{remark}
-    The Binomial distribution is \textit{not} suitable for cases where experiments are \textit{not independent}. For example, taking black versus red balls out of a container \textit{without replacement} changes the probability of getting a black ball after each experiment.
+    The Binomial distribution is \textit{not} suitable for cases where
+    experiments are \textit{not independent}. For example, taking black versus
+    red balls out of a container \textit{without replacement} changes the
+    probability of getting a black ball after each experiment.
 \end{remark}
 
 \subsubsection{Geometric Distribution}
 
 \begin{definition}[Geometric Distribution]
-    The \textit{geometric distribution} is suitable for \textit{independent} repetitions of a \textit{binary} experiment, with each experiment having success probability $p$ and failure probability $q \equiv 1 - p$.
-    
-    The random variable $X \sim \Geometric{p}$ describes the number of trials \textit{up to and including} the \textit{first success}. That is, how many tries are required to get the first success (including the first successful try).
-    
-    The probability that the $k$th trial is the first success ($k - 1$ failures followed by the $k$th success) is
-    
+    The \textit{geometric distribution} is suitable for \textit{independent}
+    repetitions of a \textit{binary} experiment, with each experiment having
+    success probability $p$ and failure probability $q \equiv 1 - p$.
+
+    The random variable $X \sim \Geometric{p}$ describes the number of trials
+    \textit{up to and including} the \textit{first success}. That is, how many
+    tries are required to get the first success (including the first successful
+    try).
+
+    The probability that the $k$th trial is the first success ($k - 1$ failures
+    followed by the $k$th success) is
+
     \begin{equation}
         \Prob{X = k} = pq^{k - 1} = p(1-p)^{k-1}, \quad k = 1, 2, \dots
     \end{equation}
-    
+
     The \textit{expected value} for $X \sim \Geometric{p}$ is
-    
+
     \begin{equation}
         \ExpVal{X} = \frac{1}{p}
     \end{equation}
-    
+
     The \textit{variance} for $X \sim \Geometric{p}$ is
-    
+
     \begin{equation}
         \Var{X} = \frac{q}{p^2} = \frac{1 - p}{p^2}
     \end{equation}
@@ -419,33 +479,40 @@
 \subsubsection{Poisson Distribution}
 
 \begin{remark}
-    The \textit{Poisson distribution} is suitable for approximating the binomial distribution in the case of large $n$ and small $p$ (rule of thumb: $n \ge 20$ and $p \le 0.05$).
+    The \textit{Poisson distribution} is suitable for approximating the
+    binomial distribution in the case of large $n$ and small $p$ (rule of
+    thumb: $n \ge 20$ and $p \le 0.05$).
 \end{remark}
 
 \begin{definition}[Poisson Distribution]
     The \textit{Poisson distribution} is useful for:
-    
+
     \begin{enumerate}
-        \item Modelling the number of random events that occurs during a given \textit{time interval} or \textit{space interval}.
-        \item Approximating a binomial distribution with large $n$ ($n \ge 20$) and small $p$ ($p \le 0.05$).
+        \item Modelling the number of random events that occurs during a given
+            \textit{time interval} or \textit{space interval}.
+        \item Approximating a binomial distribution with large $n$ ($n \ge 20$)
+            and small $p$ ($p \le 0.05$).
     \end{enumerate}
-    
-    The probability of observing $k$ events in the given interval, with the \textit{rate parameter} $\lambda$ is
-    
+
+    The probability of observing $k$ events in the given interval, with the
+    \textit{rate parameter} $\lambda$ is
+
     \begin{equation}
         \Prob{X = k} = \frac{e^{-\lambda} \lambda^k}{k!}
     \end{equation}
-    
+
     Then $X \sim \Poisson{\lambda}$ for \textit{rate parameter} $\lambda$.
-    
-    The \textit{expected value} of $X \sim \Poisson{\lambda}$ is exactly its rate parameter $\lambda$
-    
+
+    The \textit{expected value} of $X \sim \Poisson{\lambda}$ is exactly its
+    rate parameter $\lambda$
+
     \begin{equation}
         \ExpVal{X} = \lambda
     \end{equation}
-    
-    The \textit{variance} of $X \sim \Poisson{\lambda}$ is also exactly its rate parameter $\lambda$
-    
+
+    The \textit{variance} of $X \sim \Poisson{\lambda}$ is also exactly its
+    rate parameter $\lambda$
+
     \begin{equation}
         \Var{X} = \lambda
     \end{equation}
@@ -453,23 +520,23 @@
 
 \begin{definition}[Assumptions of the Poisson Process]
     The \textit{Poisson process} assumes that:
-    
+
     \begin{enumerate}
         \item Events occur \textit{randomly}.
         \item Events occur \textit{one at a time}.
         \item Events occur at the \textit{average rate} of $\lambda$ per unit time or per unit space.
         \item Number of observed events in non-overlapping time or space intervals are \textit{independent}.
     \end{enumerate}
-    
+
     If $X$ is the number of events during a \textit{time interval} or \textit{space interval} of length $t$, then $X \sim \Poisson{\lambda}$ has the \textit{mean} $\mu = \lambda t$.
 \end{definition}
 
 \begin{definition}[Approximating Binomial Distribution with Poisson Distribution]
     For a binomial distribution $X \sim \Binomial{n}{p}$ with $n \ge 20$ and $p \le 0.05$ then we can \textit{approximate} it with a Poisson distribution with $\lambda = np$.
-    
+
     \begin{equation}
         X \sim \Binomial{n}{p}, \; n \ge 20 \land p \le 0.05 \implies X \ApproxDistributed \Poisson{\lambda}, \; \lambda = n p
     \end{equation}
-    
+
     Where $\ApproxDistributed$ denotes that the distribution is an approximation.
 \end{definition}
